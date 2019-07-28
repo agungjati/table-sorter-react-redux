@@ -21,7 +21,6 @@ class FormMember extends React.Component {
 
     onChangeField = (evt) => {
         this.setStateField(evt);
-
         this.setStateButtonAble();
     }
 

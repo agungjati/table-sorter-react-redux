@@ -1,0 +1,11 @@
+.btn-sorter { 
+    float: right;
+    min-width: 0 !important; 
+}
+
+.btn-sorter .MuiButton-label{
+    display: flex;
+    flex-direction: column;
+    height: 10px;
+    width: 10px;
+}
