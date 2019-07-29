@@ -23,9 +23,4 @@ export const sortingByName = (asc) => ({
     asc : asc
 })
 
-export const CompareSort = {
-    Number_Asc : (a,b) => (a.id > b.id) ? 1 :  -1,
-    Number_Desc : (a,b) => (a.id < b.id) ? 1 :  -1,
-    Name_Asc : (a,b) => (a.name > b.name) ? 1 :  -1,
-    Name_Desc : (a,b) => (a.name < b.name) ? 1 :  -1,
-}
+ 

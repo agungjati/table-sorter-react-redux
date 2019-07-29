@@ -42,7 +42,7 @@ class FormMember extends React.Component {
 
     render() {
         return (
-            <Paper style={{ width: "400px", margin: "25px" }}>
+            <Paper style={{ width: "400px", margin: "24px", backgroundColor: "#ffffffed" }}>
             <form onSubmit={this.props.onAddMember}  style={this.formStyle} >
                 <TextField
                     onChange={this.onChangeField}

@@ -43,12 +43,16 @@ class App extends React.Component {
   }
 
   render() {
+    let { sortNameAsc, sortNoAsc  } = this.state
+
     return (
       <div>
         <FormMember onAddMember={this.onAddMember} />
         <br />
-        <Paper style={{ padding: "10px" }}>
+        <Paper style={{ padding: "10px", margin:"0 24px", backgroundColor: "#ffffffed" }}>
           <MyTable 
+            sortNameAsc={sortNameAsc}
+            sortNoAsc={sortNoAsc}
             onSortName={this.onSortName}
             onSortNumber={this.onSortNumber}
             list={this.props.list} />

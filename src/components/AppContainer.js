@@ -1,28 +1,20 @@
 import { ActionTypeEnum } from '../actions'
 import { connect } from 'react-redux'
 import { AddMember, sortingByNumber, 
-    sortingByName, CompareSort } from '../actions'
+    sortingByName } from '../actions'
 import App from './App'
 
-const mapStateProp = (state, dispatch) => {
+const CompareSort = {
+  Number_Asc : (a,b) => (a.id > b.id) ? 1 :  -1,
+  Number_Desc : (a,b) => (a.id < b.id) ? 1 :  -1,
+  Name_Asc : (a,b) => (a.name > b.name) ? 1 :  -1,
+  Name_Desc : (a,b) => (a.name < b.name) ? 1 :  -1,
+}
+
+const mapStateProp = (state) => {
     let { reducerMember, reducerSort } = state
     let newState = []
   
-    //  if(reducerSort.type == ActionTypeEnum.SORT_NAME)
-    //  {
-    //    if(reducerSort.asc) 
-    //       newState = reducerMember.sort(CompareSort.Name_Asc)
-    //     else
-    //       newState = reducerMember.sort(CompareSort.Name_Desc)
-  
-    //  }else {
-       
-    //   if(reducerSort.asc) 
-    //       newState = reducerMember.sort(CompareSort.Number_Asc)
-    //     else
-    //       newState = reducerMember.sort(CompareSort.Number_Desc)
-    //  }
-debugger
     switch(reducerSort.type)
     {
       case ActionTypeEnum.SORT_NAME:
@@ -33,7 +25,8 @@ debugger
           case false:
             newState = reducerMember.sort(CompareSort.Name_Desc)
             break;
-          
+          default:
+            break;
         }
       break;
       case ActionTypeEnum.SORT_NO :
@@ -44,7 +37,11 @@ debugger
           case false:
             newState = reducerMember.sort(CompareSort.Number_Desc)
             break;
+          default:
+            break;
         }
+      break;
+      default:
       break;
     }
 

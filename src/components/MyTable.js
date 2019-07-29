@@ -13,38 +13,50 @@ import PropTypes from 'prop-types'
 
 class MyTable extends React.Component {
 
+  static propTypes = {
+    onSortName : PropTypes.func.isRequired,
+    onSortNumber : PropTypes.func.isRequired,
+    list : PropTypes.array.isRequired,
+    sortNameAsc : PropTypes.bool,
+    sortNoAsc : PropTypes.bool
+  }
 
   TRowNoData = () => (<TableRow>
     <TableCell colSpan={3} align="center">No Data</TableCell>
   </TableRow>)
 
   render() {
-    const { onSortNumber, onSortName, list } = this.props
+    const { onSortNumber, onSortName, list, sortNameAsc, sortNoAsc } = this.props
+
+    let transparentIconNoUp = sortNoAsc ? "" : "half-transparent",
+        transparentIconNoDown = sortNoAsc ? "half-transparent" : "",
+        transparentIconNameUp = sortNameAsc ? "" : "half-transparent",
+        transparentIconNameDown = sortNameAsc ? "half-transparent" : "";
 
     return (
-      <Table>
+      <Table className="my-table">
         <TableHead>
-          <TableRow>
+          <TableRow style={{background: "#fff"}}>
             <TableCell
               onClick={onSortNumber}
               width="80"
               className="cursor-pointer">
               No.
               <Button className="btn-sorter">
-                <ArrowDropUp style={{ transform: "translateY(8px)" }} />
-                <ArrowDropDown style={{ transform: "translateY(-6px)" }} />
+                <ArrowDropUp className={transparentIconNoUp} style={{ transform: "translateY(8px)" }} />
+                <ArrowDropDown className={transparentIconNoDown} style={{ transform: "translateY(-6px)" }} />
               </Button>
             </TableCell>
             <TableCell
               onClick={onSortName}
               className="cursor-pointer">
-              Nama
+              Name
               <Button className="btn-sorter">
-                <ArrowDropUp style={{ transform: "translateY(8px)" }} />
-                <ArrowDropDown style={{ transform: "translateY(-6px)" }} />
+                <ArrowDropUp className={transparentIconNameUp} style={{ transform: "translateY(8px)" }} />
+                <ArrowDropDown className={transparentIconNameDown} style={{ transform: "translateY(-6px)" }} />
               </Button>
             </TableCell>
-            <TableCell>Umur</TableCell>
+            <TableCell>Age</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
